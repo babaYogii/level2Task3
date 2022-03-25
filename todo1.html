@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do</title>
+</head>
+<style>
+    .main {
+        display: flex;
+        justify-content: center;
+        margin-top: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    input {
+        font-size: 1.11rem;
+        width: 15rem;
+        text-align: center;
+        height: 1.5rem;
+        border: 2px solid balck;
+        border-radius: 8px;
+    }
+
+    button {
+        cursor: pointer;
+        padding: 5px;
+        margin:100px;
+        width: 5rem;
+        border-radius: 7px;
+        margin: 5px;
+    }
+
+    span {
+        color: rgb(255, 6, 6);
+        margin-left: 23%;
+        margin-top: 12px;
+    }
+
+    #lists {
+        list-style: none;
+        margin-top: 1.5%;
+        display:flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    li {
+        margin: 4px;
+        cursor: pointer;
+        text-align: center;
+        font-size: large;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+
+    .border {
+        height: 40rem;
+        width: 40rem;
+        border: 2px solid black;
+        margin-left: 31%;
+        margin-top: 5%;
+        background: linear-gradient(35deg, #2cad82, transparent);
+        border-radius: 20px;
+    }
+</style>
+
+<body>
+    <div class="border">
+        <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Todo App</h1>
+        <div class="span">
+            <span id="span"></span>
+        </div>
+        <div class="main">
+            <div class="name">
+                <input type="text" placeholder="Enter items" id="name">
+            </div>
+            <div class="btn">
+                <button onclick="submit()" value="add" type="button">Add</button>
+            </div>
+        </div>
+        <div id="lists">
+        </div>
+    </div>
+    <script>
+        function submit() {
+            let item = document.getElementById("name");
+            let list_item = document.getElementById("lists");
+            if (item.value == "") {
+                document.getElementById('span').innerText = "**Please fill input field**"
+                return false
+            }
+            else {
+
+                document.getElementById('span').innerText = ""
+                let list = document.createElement("li");
+                list.appendChild(document.createTextNode(item.value));
+                list_item.appendChild(list);
+                item.value = ""
+
+                list.onclick = function () {
+                    this.parentNode.removeChild(this);
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
